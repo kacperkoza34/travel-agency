@@ -16,6 +16,11 @@ import Regions from './components/views/Regions/RegionsContainer';
 import Trip from './components/views/Trip/TripContainer';
 import Country from './components/views/Country/CountryContainer';
 
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
+
 
 //import TripSummary from './components/features/TripSummary/TripSummary';
 
@@ -51,22 +56,23 @@ class App extends React.Component {
       <BrowserRouter>
         <MainLayout>
           <AnimatedSwitch
-            atEnter={{ opacity: 0 }}
-            atLeave={{ opacity: 0 }}
-            atActive={{ opacity: 1 }}
+
+            atEnter={{ opacity: 0, top:200 }}
+            atLeave={{ opacity: 0, top:0 }}
+            atActive={{ opacity: 1, top:0 }}
             className={styles.switchwrapper}
-            location={location}>
+            >
 
 
             <Route exact path='/' component={Home} />
+
             <Route exact path='/trips' component={Trips} />
-            {/* TODO - add more routes for other views */}
             <Route exact path='/countries' component={Countries} />
             <Route exact path='/regions' component={Regions} />
             <Route exact path='/info' component={Info} />
 
-            <Route  exact path='/trip/:id' component={Trip} />
 
+            <Route  exact path='/trip/:id' component={Trip} />
             <Route  exact path='/country/:id' component={Country} />
 
 

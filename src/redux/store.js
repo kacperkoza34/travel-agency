@@ -4,6 +4,7 @@ import tripList from '../data/trips.json';
 import globalReducer from './globalRedux';
 import filtersReducer from './filtersRedux';
 
+
 // define initial state and shallow-merge initial data
 const initialState = {
   trips: tripList,
