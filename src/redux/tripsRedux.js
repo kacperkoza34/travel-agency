@@ -1,6 +1,8 @@
 /* SELECTORS */
 
 export const getAllTrips = ({trips}) => trips;
+export const getAllCountries = ({countries}) => countries;
+
 
 export const getFilteredTrips = ({trips, filters}) => {
   let output = trips;
@@ -21,20 +23,31 @@ export const getFilteredTrips = ({trips, filters}) => {
 };
 
 export const getTripById = ({trips}, tripId) => {
-  const filtered = trips;
+  let filtered;
 
-  // TODO - filter trips by tripId
 
-  console.log('filtering trips by tripId:', tripId, filtered);
-  return filtered.length ? filtered[0] : {error: true};
+  const filteredById = (tripId, trips) => trips.filter( trip => tripId == trip.id );
+
+
+  //export const getCardsForColumn = ({cards}, columnId) => cards.filter(card => card.columnId == columnId );
+
+  //console.log(filtredById);
+  filtered = filteredById(tripId, trips);
+  return filtered.length ? filtered : [{error: true}];
+
 };
 
 export const getTripsForCountry = ({trips}, countryCode) => {
-  const filtered = trips;
+  let filtered;
+  //console.log('first arg: ', trips, 'country code:' , countryCode);
+
 
   // TODO - filter trips by countryCode
 
-  console.log('filtering trips by countryCode:', countryCode, filtered);
+  const matchTrip = (trips, countryCode) => trips.filter( trip => trip.country.code == countryCode );
+
+  filtered = matchTrip(trips, countryCode);
+  //console.log('filtering trips by countryCode:', countryCode, filtered);
   return filtered.length ? filtered : [{error: true}];
 };
 

@@ -20,4 +20,18 @@ a, a:hover, a:visited {
   text-decoration: none;
 }
 
+.switchwrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: 1s;
+}
+
+.switchwrapper > div {
+  //opacity: 0;
+  position: absolute;
+  
+  //transition: 3s;
+}
+
 @import "./typography.scss";
