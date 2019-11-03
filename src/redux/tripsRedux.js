@@ -4,8 +4,9 @@ export const getAllTrips = ({trips}) => trips;
 export const getAllCountries = ({countries}) => countries;
 
 
-export const getFilteredTrips = ({trips, filters}) => {
+export const getFilteredTrips = ({trips, filters, tags}) => {
   let output = trips;
+  const result = [];
 
   // filter by search phrase
   if(filters.searchPhrase){
@@ -13,41 +14,52 @@ export const getFilteredTrips = ({trips, filters}) => {
     output = output.filter(trip => pattern.test(trip.name));
   }
 
-  // TODO - filter by duration
+  // filter by duration
+  output = output.filter(trip => trip.days >= filters.duration.from && trip.days <= filters.duration.to);
 
-  // TODO - filter by tags
+  // filter by tags
+  if(filters.tags[0]){
+    for(let tag in filters.tags){
+      for(let ten in tags){
+        if(ten === filters.tags[tag]) result.push(tags[ten].trips);
+      }
+    }
+    //output = output.map( out => result.map( res => console.log(res., '==', out)));
+    let final = []
+    for(let i in output){
+      let check;
+      for(let j in result){
+        if( 0 > result[j].indexOf(output[i].id)){
+         output.splice(i,1, 'a');
+        }
+      }
+    }
+    output = output.filter(out => out !== 'a');
 
+  }
   // TODO - sort by cost descending (most expensive goes first)
-
   return output;
-};
+}
+
 
 export const getTripById = ({trips}, tripId) => {
   let filtered;
 
-
   const filteredById = (tripId, trips) => trips.filter( trip => tripId == trip.id );
 
-
-  //export const getCardsForColumn = ({cards}, columnId) => cards.filter(card => card.columnId == columnId );
-
-  //console.log(filtredById);
   filtered = filteredById(tripId, trips);
-  return filtered.length ? filtered : [{error: true}];
 
+  return filtered.length ? filtered : [{error: true}];
 };
 
 export const getTripsForCountry = ({trips}, countryCode) => {
+
   let filtered;
-  //console.log('first arg: ', trips, 'country code:' , countryCode);
-
-
-  // TODO - filter trips by countryCode
 
   const matchTrip = (trips, countryCode) => trips.filter( trip => trip.country.code == countryCode );
 
   filtered = matchTrip(trips, countryCode);
-  //console.log('filtering trips by countryCode:', countryCode, filtered);
+
   return filtered.length ? filtered : [{error: true}];
 };
 

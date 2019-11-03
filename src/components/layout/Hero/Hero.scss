@@ -1,6 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .component {
+  width: 100vw;
   position: relative;
   min-height: ($base-size * 35);
   background: $color-dark;

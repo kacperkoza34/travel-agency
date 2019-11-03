@@ -20,11 +20,11 @@ class TripListOptions extends React.Component {
 
   handleDuration(type, value){
     //console.log('Changing duration', type, value);
-
     this.props.changeDuration(parseInt(value), type);
   }
 
   handleSearch(phrase){
+    //console.log(this.props.changeSearchPhrase(phrase));
     this.props.changeSearchPhrase(phrase);
   }
 
