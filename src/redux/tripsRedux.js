@@ -7,7 +7,7 @@ export const getAllCountries = ({countries}) => countries;
 export const getFilteredTrips = ({trips, filters, tags}) => {
   let output = trips;
   const result = [];
-
+  //console.log(tags);
   // filter by search phrase
   if(filters.searchPhrase){
     const pattern = new RegExp(filters.searchPhrase, 'i');
@@ -18,14 +18,13 @@ export const getFilteredTrips = ({trips, filters, tags}) => {
   output = output.filter(trip => trip.days >= filters.duration.from && trip.days <= filters.duration.to);
 
   // filter by tags
-  if(filters.tags[0]){
+  if(filters.tags.length){
     for(let tag in filters.tags){
       for(let ten in tags){
         if(ten === filters.tags[tag]) result.push(tags[ten].trips);
       }
     }
     //output = output.map( out => result.map( res => console.log(res., '==', out)));
-    let final = []
     for(let i in output){
       let check;
       for(let j in result){
