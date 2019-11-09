@@ -16,7 +16,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.html": "eslint"
+    "src/**/*.js": "eslint"
   },
   "keywords": [],
   "author": "",
