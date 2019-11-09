@@ -8,6 +8,9 @@ import OrderOptionCheckboxes from './OrderOptionCheckboxes';
 import OrderOptionDropdown from './OrderOptionDropdown';
 import OrderOptionIcons from './OrderOptionIcons';
 import OrderOptionNumber from './OrderOptionNumber';
+import OrderOptionDate from './OrderOptionDate';
+import OrderOptionText from './OrderOptionText';
+
 
 //import {Grid, Row, Col} from 'react-flexbox-grid';
 
@@ -16,6 +19,8 @@ const optionTypes = {
   icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
+  date: OrderOptionDate,
+  text: OrderOptionText,
 };
 
 const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
@@ -23,6 +28,7 @@ const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
   if(!OptionComponent){
     return null;
   } else {
+
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{name}</h3>

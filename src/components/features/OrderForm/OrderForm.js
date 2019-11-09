@@ -9,8 +9,8 @@ import {Grid, Row, Col} from 'react-flexbox-grid';
 import pricing from '../../../data/pricing.json';
 
 
-const OrderForm = ({tripCost, options, setOrderOption}) => (
-  <Row>
+const OrderForm = ({tripCost, options, setOrderOption}) => (console.log(pricing),
+  <Row className={styles.component}>
       {pricing.map(el => (
         <Col md={4} key={el.id}>
           <OrderOption setOrderOption={setOrderOption} currentValue={options[el.id]} key={el.id} {...el} />

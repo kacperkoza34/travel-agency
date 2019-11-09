@@ -8,16 +8,21 @@ import Icon from '../../common/Icon/Icon'
 class OrderOptionIcons extends React.Component {
 
     render(){
-      const {values, setOptionValue, required } = this.props;
-      //setOptionValue('hotel');
-      //console.log(values[0].id);
+      const {values, setOptionValue, required, currentValue } = this.props;
       return(
         <div className={styles.component}>
-          {values.map(value => (
-            <div className={styles.icon} key={value.id} >
-              <Icon  name={value.icon} price={value.price} onClick={value => setOptionValue(value.id)} ></Icon>
-            </div>
-          ))}
+          {values.map(value => {
+            let activeElement = styles.icon;
+            if(value.id == currentValue ){activeElement = styles.iconActive };
+            return(<div key={value.id} className={activeElement} >
+              <Icon
+                name={value.icon}
+                price={value.price}
+                title={value.name}
+                addOption={event => setOptionValue(value.id)}
+              />
+            </div>)
+          })}
         </div>
       );
     }

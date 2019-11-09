@@ -20,18 +20,16 @@
 .icon {
   cursor: pointer;
   width: 80%;
-  padding: ($base-size / 2);
-
   i {
-    padding-right: ($base-size / 2);
+    padding-left: 8px;
+    width: 100%;
   }
 
   &Active {
+    padding-left: 8px;
     background: $color-primary;
+    border-radius: $radius;
   }
-}
-.icon:hover {
-  background: $color-primary;
 }
 
 .checkboxes {

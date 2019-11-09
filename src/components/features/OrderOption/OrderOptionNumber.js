@@ -13,6 +13,8 @@ const OrderOptionNumber = ({currentValue, limits, setOptionValue}) => (
      min={limits.min}
      max={limits.max}
     />
+
+
   </div>
 );
 
