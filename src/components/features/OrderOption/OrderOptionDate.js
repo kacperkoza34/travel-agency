@@ -11,7 +11,9 @@ import pricing from '../../../data/pricing.json';
 
 
 
+
 class OrderOptionDate extends React.Component {
+
   state = {
      startDate: new Date()
    };
@@ -27,15 +29,14 @@ class OrderOptionDate extends React.Component {
 
  render() {
    const {setOptionValue} = this.props;
-   //console.log(this.state.startDate);
-   //const listner = arg => setOptionValue(arg);
-   //listner(this.state);
+
    return (
        <DatePicker
          selected={this.state.startDate}
-         onSelect={this.state.inputValue}
-        // onChange={event => setOptionValue(this.state.startDate)}
+         //onChange={event => console.log(this.handleChange)}
          onChange={this.handleChange}
+         onSelect={event => setOptionValue(this.state.startDate)}
+
        />
    );
  }
