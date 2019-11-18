@@ -4,6 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import styles from './styles/global.scss';
 
+
 import PropTypes from 'prop-types';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
