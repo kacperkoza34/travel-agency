@@ -10,6 +10,7 @@ function ListItem(props) {
       <Icon name={props.icon} /><span>{ReactHtmlParser(props.title)}</span>
     </div>
   );
+
 }
 
 ListItem.propTypes = {

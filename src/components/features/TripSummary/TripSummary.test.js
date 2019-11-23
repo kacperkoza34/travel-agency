@@ -54,6 +54,7 @@ describe('Component TripSummary', () => {
     //expect(renderedTitle).toEqual(expectedTitle);
     for(let i = 0; i<3; i++){
       expect(component.find('.tag').at(i).text()).toEqual(tags[i]);
+      console.log(component.find('.tag').debug());
     }
 
 
@@ -69,7 +70,7 @@ describe('Component TripSummary', () => {
     //expect(renderedTitle).toEqual(expectedTitle);
     if(!tags.length){
       //expect(component.exists('.tags')).to.equal(false);
-      expect(component.find('.tag').exists()).toEqual(false)
+      expect(component.find('.tag').exists()).toEqual(false);
     }
 
 
