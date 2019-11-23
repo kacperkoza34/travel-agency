@@ -23,24 +23,7 @@ const optionTypes = {
   text: OrderOptionText,
 };
 
-const OrderOption = ({name, type, id, setOrderOption, validation, ...otherProps}) => {
-  let errorName = '<i style="color: green"class="far fa-check-circle"></i>';
-  if(id === 'name' && validation.name.length == 0){
-    errorName = '<i class="fas fa-exclamation"></i>';
-  }
-  else if(id === 'contact' && validation.contact.length == 0){
-    errorName = '<i class="fas fa-exclamation"></i>';
-  }
-  else if(validation.startDate !== null ){
-    if(id === 'startDate' && validation.startDate.length == 0){
-      errorName = '<i class="fas fa-exclamation"></i>';
-    }
-  }
-  else validation.startDate = '';
-
-
-
-
+const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
   const OptionComponent = optionTypes[type];
   if(!OptionComponent){
     return null;
@@ -51,7 +34,6 @@ const OrderOption = ({name, type, id, setOrderOption, validation, ...otherProps}
         <OptionComponent
           setOptionValue={value => setOrderOption({[id]: value})}
           {...otherProps}
-          errorName={errorName}
         />
       </div>
     );

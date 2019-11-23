@@ -32,15 +32,18 @@ const sendOrder = (options, tripCost) => {
     },
     body: JSON.stringify(payload),
   };
-  if(options.contact != '' && options.name != '' ){
+  if(options.contact != '' && options.name != '' && options.startDate != null && options.startDate != ''){
     fetch(url, fetchOptions)
       .then(function(response){
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
         window.alert('Your reservation is confirmed');
-      });}
-   else window.alert('Please fill all fields marked with ! . ');
+        location.reload();
+
+      });
+  }
+   else window.alert('Please fill all fields');
 };
 
 
@@ -56,7 +59,6 @@ const OrderForm = ({tripCost, options, setOrderOption}) => (
       <Col xs={12}>
         <OrderSummary cost={tripCost} options={options}/>
       </Col>
-
 
       <Button onClick={() => sendOrder(options, tripCost)}>Order now!</Button>
 
