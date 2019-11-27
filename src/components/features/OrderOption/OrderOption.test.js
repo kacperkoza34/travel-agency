@@ -50,7 +50,7 @@ const mockProps = {
     {id: 'xyz', icon: 'h-square', name: 'Lorem X', price: 100},
   ],
   required: false,
-  currentValue: 'aaa',
+  currentValue: {checked: true},
   price: '50%',
   limits: {
     min: 0,
@@ -60,8 +60,8 @@ const mockProps = {
 
 const mockPropsForType = {
   dropdown: {},
-  icons: {currentValue: true},
-  checkboxes: {currentValue: [mockProps.currentValue]},
+  icons: {currentValue: [mockProps.values[0].price]},
+  checkboxes: [ mockProps.currentValue],
   number: {currentValue: 1},
   text: {},
   date: {},
@@ -81,6 +81,7 @@ for(let type in optionTypes){
 
     beforeEach(() => {
       mockSetOrderOption = jest.fn(); /* 2 */
+      //console.log(mockSetOrderOption.debug());
       component = shallow(
         <OrderOption
           type={type}
@@ -125,25 +126,29 @@ for(let type in optionTypes){
       }
 
       case 'icons': {
-        /* tests for icons */
-        it('contains icon', () => {
-          const icon = renderedSubcomponent.find('Icon');
-          //console.log(icon.debug());
-          expect(icon.length).toBe(2);
-        });
+          /* tests for icons */
+          it('contains icon', () => {
+            const icon = renderedSubcomponent.find('Icon');
+            //console.log(icon.debug());
+            expect(icon.length).toBe(2);
+          });
 
+          it('should run setOrderOption function on change', () => {
+            const icon = renderedSubcomponent.find('Icon').at(1).dive();
+
+            icon.simulate('click', {});
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+
+          });
+
+        break;
+      }
+
+      case 'checkboxes': {
         it('should run setOrderOption function on change', () => {
-          const icon = renderedSubcomponent.find('.component');
-          //const test = icon.at(1);
-          console.log(icon.debug());
-          /*
-          icon.at(1).simulate('click', {currentTarget: {currentTarget: {value: testValue}} });
-          expect(mockSetOrderOption).toBeCalledTimes(1);
-          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+            
 
-          */
-
-          //expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
 
         break;
