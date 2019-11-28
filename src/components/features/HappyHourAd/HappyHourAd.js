@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './HappyHourAd.scss';
 import PropTypes from 'prop-types';
+import {formatTime} from '../../../utils/formatTime';
+
 
 //import {Grid, Row, Col} from 'react-flexbox-grid';
 
@@ -26,7 +28,8 @@ class HappyHourAd extends React.Component {
 
     //let currentDate = new Date();
     //let currentHour = currentDate.getHours();
-    let description = this.getCountdownTime();
+    let description = formatTime(this.getCountdownTime());
+
     if(this.getCountdownTime() <= 86400 && this.getCountdownTime() >= 82801 ) description = 'The best time to choose trip';
 
     return(
