@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .component {
-  width: 100vw;
+  width: 98.5vw;
   position: relative;
   min-height: ($base-size * 35);
   background: $color-dark;
@@ -44,10 +44,17 @@
   object-fit: cover;
 }
 
-.happyHour {
+.happyHour, .daysToSummer {
   z-index: 999;
   position: absolute;
-  bottom: 20px;
   left: 0;
   right: 0;
+}
+
+.happyHour {
+  bottom: 20px;
+}
+
+.daysToSummer {
+  top: 60px;
 }
